@@ -9,4 +9,5 @@
     <string name="bt_plus">+</string>
     <string name="bt_equally">=</string>
     <string name="bt_clear">C</string>
+    <string name="text_result_zero">0</string>
 </resources>
