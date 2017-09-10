@@ -115,7 +115,7 @@ public class MainActivity extends AppCompatActivity
             Toast.makeText(this, "Number is too much!", Toast.LENGTH_SHORT).show();
         }
         mSing.setText("=");
-        mEnteredData.setText(String.format("%s + %s =", first_number, second_number));
+        mEnteredData.setText(String.format(getString(R.string.entered_data_full), first_number, second_number));
 
         isPlusPressed = false;
         first_number = countUp();

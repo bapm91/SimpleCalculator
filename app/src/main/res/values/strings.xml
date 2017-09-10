@@ -1,13 +1,17 @@
 <resources>
     <string name="app_name">SimpleCalculator</string>
-    <string name="bt_one">1</string>
-    <string name="bt_two">2</string>
-    <string name="bt_three">3</string>
-    <string name="bt_four">4</string>
-    <string name="bt_five">5</string>
-    <string name="bt_six">6</string>
-    <string name="bt_plus">+</string>
-    <string name="bt_equally">=</string>
-    <string name="bt_clear">C</string>
+
+    <string name="sign_one">1</string>
+    <string name="sign_two">2</string>
+    <string name="sign_three">3</string>
+    <string name="sign_four">4</string>
+    <string name="sign_five">5</string>
+    <string name="sign_six">6</string>
+    <string name="sign_plus">+</string>
+    <string name="sign_equally">=</string>
+    <string name="sign_clear">C</string>
+
     <string name="text_result_zero">0</string>
+    <string name="entered_data_full">%s + %s</string>
+
 </resources>
