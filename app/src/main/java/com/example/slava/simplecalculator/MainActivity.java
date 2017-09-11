@@ -3,6 +3,7 @@ package com.example.slava.simplecalculator;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,9 +39,6 @@ public class MainActivity extends AppCompatActivity
         super.onSaveInstanceState(outState);
         outState.putString("first_number", first_number);
         outState.putString("second_number", second_number);
-        outState.putString("mTextResult", mTextResult.getText().toString());
-        outState.putString("mSing", mSing.getText().toString());
-        outState.putString("mEnteredData", mEnteredData.getText().toString());
         outState.putBoolean("isPlusPressed", isPlusPressed);
     }
 
@@ -48,9 +46,6 @@ public class MainActivity extends AppCompatActivity
         super.onRestoreInstanceState(savedInstanceState);
         first_number = savedInstanceState.getString("first_number");
         second_number = savedInstanceState.getString("second_number");
-        mTextResult.setText(savedInstanceState.getString("mTextResult"));
-        mSing.setText(savedInstanceState.getString("mSing"));
-        mEnteredData.setText(savedInstanceState.getString("mEnteredData"));
         isPlusPressed = savedInstanceState.getBoolean("isPlusPressed");
     }
 
@@ -80,22 +75,26 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void number(View view) {
+        Button button = (Button) view;
         if (!isPlusPressed) {
             if (first_number.length() < 6) {
-                first_number += numberPressed(view);
+                first_number += button.getText();
                 mTextResult.setText(first_number);
             }
         } else {
             if (second_number.length() < 6) {
-                second_number += numberPressed(view);
+                second_number += button.getText();
                 mTextResult.setText(second_number);
             }
         }
     }
 
     private void plus() {
+        if (first_number.length() == 0) {
+            return;
+        }
         mTextResult.setText("0");
-        if (isPlusPressed) {
+        if (isPlusPressed && second_number.length() > 0) {
             first_number = countUp();
             second_number = "";
             mEnteredData.setText(first_number);
@@ -115,7 +114,7 @@ public class MainActivity extends AppCompatActivity
             Toast.makeText(this, "Number is too much!", Toast.LENGTH_SHORT).show();
         }
         mSing.setText("=");
-        mEnteredData.setText(String.format(getString(R.string.entered_data_full), first_number, second_number));
+        mEnteredData.setText(first_number + " + " + second_number);
 
         isPlusPressed = false;
         first_number = countUp();
@@ -130,30 +129,6 @@ public class MainActivity extends AppCompatActivity
         mEnteredData.setText("");
         mTextResult.setText("0");
         mSing.setText("");
-    }
-
-    private String numberPressed(View view) {
-        switch (view.getId()) {
-
-            case R.id.button:
-                return "1";
-
-            case R.id.button2:
-                return "2";
-
-            case R.id.button3:
-                return "3";
-
-            case R.id.button4:
-                return "4";
-
-            case R.id.button5:
-                return "5";
-
-            case R.id.button6:
-                return "6";
-        }
-        return "";
     }
 
     private String countUp() {
